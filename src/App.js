@@ -31,12 +31,31 @@ function App() {
     const category = categories[Math.floor(Math.random() * Object.keys(categories).length)]
 
     console.log(category)
+
+    // pick a random word
+    const word = words[category][Math.floor(Math.random() * words[category].length)]
+    console.log(word)
+
+    return { word, category }
   }
 
   // start
   const startGame = () =>{
     // pick word and pick category
-    pickWordAndCategory()
+    const {word, category} = pickWordAndCategory()
+
+    // create an array of letters
+    let wordLetters = word.split("")
+
+    wordLetters = wordLetters.map((l) => l.toLowerCase())
+
+    console.log(word, category)
+    console.log(wordLetters)
+
+    // fill states
+    setPickedWord(word)
+    setPickedCategory(category)
+    setLetters(letters)
 
     setGameStage(stages[1].name)
   }
