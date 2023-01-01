@@ -37,7 +37,7 @@ function App() {
     const categories = Object.keys(words)
     const category = categories[Math.floor(Math.random() * Object.keys(categories).length)]
 
-    console.log(category)
+    console.log(category) 
 
     // pick a random word
     const word = words[category][Math.floor(Math.random() * words[category].length)]
@@ -65,8 +65,8 @@ function App() {
   }
 
   //  process the letter
-  const verifyLetter = () => {
-    setGameStage(stages[2].name)
+  const verifyLetter = (letter) => {
+    console.log(letter)
   }
 
   // finish latter
