@@ -73,29 +73,45 @@ function App() {
     if(guessedLetters.includes(normalizedLetter) || 
     wrongLetters.includes(normalizedLetter)
     ) {
-      return
+      return 
     }
 
     //push guessed letter or remove a guess
-    if(letter.includes(normalizedLetter)){
+    if(letters.includes(normalizedLetter)){
       setGuessedLetters((actualGuessedLetters) => [
         ...actualGuessedLetters,
-        normalizedLetter
+        letter,
       ])
     } else { 
       setWrongLetters((actualWrongLetters) => [
         ...actualWrongLetters,
-        normalizedLetter
+        normalizedLetter,
     ])
+
+    setGuesses((actualGuesses) => actualGuesses - 1)
   }
 }
-console.log(guessedLetters)
-console.log(wrongLetters)
-  
+
   // finish latter
   const retry = () => {
+    setScore(0)
+    setScore(3)
     setGameStage(stages[0].name)
   }
+
+  const clearLetterStates = () => {
+    setGuessedLetters([])
+    setWrongLetters([])
+  }
+
+  useEffect(() =>{
+
+    if(guesses <= 0){
+      //reset all states
+      clearLetterStates()
+      setGameStage(stages[2].name)
+    }
+  },[guesses])
   
   return (
     <div className="App">
