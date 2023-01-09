@@ -95,7 +95,7 @@ function App() {
   // finish latter
   const retry = () => {
     setScore(0)
-    setScore(3)
+    setGuesses(3)
     setGameStage(stages[0].name)
   }
 
